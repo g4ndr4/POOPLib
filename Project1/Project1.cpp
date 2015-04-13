@@ -6,61 +6,6 @@
 
 using namespace std;
 
-// ==========================
-// klasa za licnu kartu
-// class PersonalID{}
-// ==========================
-
-// ==========================
-// klasa za clansku kartu(apstraktna)
-// class MembershipID{}
-// ==========================
-
-// ==========================
-// klasa za moju clansku kartu (izvedena iz clanske karte)
-// class MyMembershipID{}
-// ==========================
-
-// ==========================
-// klasa za fajl
-// class File{}
-// ==========================
-
-// ==========================
-// klasa za kolekciju fajlova
-// class FileStorage{}
-// ==========================
-
-// ==========================
-// klasa za poziciju knjige
-// class Position{}
-// ==========================
-
-// ==========================
-// Enum za stanje knjige
-// enum BookCollection{}
-// ==========================
-
-// ==========================
-// klasa za knjigu
-// class Book{}
-// ==========================
-
-// ==========================
-// klasa za kolekciju knjiga
-// class BookCollection{}
-// ==========================
-
-// ==========================
-// klasa za biblioteku
-// class Library{}
-// ==========================
-
-// ==========================
-// klasa za osobu
-// class Person{}
-// ==========================
-
 int main(int argc, char const *argv[]){
 	SetOfPublishers *sp = SetOfPublishers::getInstance();
 	Library lib(sp);
