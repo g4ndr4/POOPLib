@@ -7,6 +7,16 @@
 using namespace std;
 
 int main(int argc, char const *argv[]){
+
+	while (true){
+		cout << "Opcije: " << endl;
+		cout << "1. Dodavanje novog clana;" << endl;
+		cout << "2. Isclanjivanje iz biblioteke" << endl;
+		cout << "3. Dodavanje knjige;" << endl;
+		cout << "4. Uklanjanje knjige;" << endl;
+		cout << "5. Iznajmljivanje knjige;" << endl;
+	}
+
 	SetOfPublishers *sp = SetOfPublishers::getInstance();
 	Library lib(sp);
 
