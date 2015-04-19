@@ -40,7 +40,10 @@ bld/
 *.pidb
 *.svclog
 *.scc
+Debug/
 
+*.tlog
+*.idb
 
 # Precompiled Headers
 *.gch
