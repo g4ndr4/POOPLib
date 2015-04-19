@@ -6,7 +6,7 @@ BookWrapper::BookWrapper(Book b){
 	title = b.getTitle();
 	publisherName = b.getPublisherName();
 	author = b.getAuthor();
-	book_wrap.push_back(b);
+	book_wrap.push_back(&b);
 }
 BookWrapper::~BookWrapper(){}
 
@@ -27,13 +27,13 @@ vector<string> BookWrapper::getAuthor() const{
 //rad sa book_wrap
 
 void BookWrapper::addBook(Book b){
-	book_wrap.push_back(b);
+	book_wrap.push_back(&b);
 }
 
 vector<Book *> BookWrapper::removeBook(string title, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		if (it->getBorrowing() == nullptr){
-			book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		if ((*it)->getBorrowing() == nullptr){
+			book_temp.push_back(*it);
 			cout << "Redni Broj Knjige: " << book_count + 1 << endl;
 			cout << *it << endl;
 			book_count++;
@@ -43,15 +43,15 @@ vector<Book *> BookWrapper::removeBook(string title, int &book_count, vector<Boo
 }
 
 Book *BookWrapper::getBook(int index){
-	return &book_wrap[index];
+	return book_wrap[index];
 }
 
 //pretrage
 
 vector<Book*> BookWrapper::searchBorrow(string title, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		if (it->getBorrowing() == nullptr){
-			book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		if ((*it)->getBorrowing() == nullptr){
+			book_temp.push_back(*it);
 			cout << "Redni Broj Knjige: " << book_count + 1 << endl << endl;
 			cout << *it << endl;
 			book_count++;
@@ -61,8 +61,8 @@ vector<Book*> BookWrapper::searchBorrow(string title, int &book_count, vector<Bo
 }
 
 vector<Book*> BookWrapper::searchByTitle(string title, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		book_temp.push_back(*it);
 		cout << "Redni Broj Knjige: " << book_count + 1 << endl << endl;
 		cout << *it << endl;
 		book_count++;
@@ -71,8 +71,8 @@ vector<Book*> BookWrapper::searchByTitle(string title, int &book_count, vector<B
 }
 
 vector<Book *> BookWrapper::searchByTitle(string title, int publicationYear, string publisherName, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		book_temp.push_back(*it);
 		cout << "Redni broj knjige: " << book_count + 1 << endl;
 		cout << *it << endl;
 		book_count++;
@@ -81,9 +81,9 @@ vector<Book *> BookWrapper::searchByTitle(string title, int publicationYear, str
 }
 
 vector<Book *> BookWrapper::searchByBookCondition(string book_condition, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		if (it->getBookCondition() == book_condition){
-			book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		if ((*it)->getBookCondition() == book_condition){
+			book_temp.push_back(*it);
 			cout << "Redni broj knjige: " << book_count + 1 << endl;
 			cout << *it << endl;
 			book_count++;
@@ -93,9 +93,9 @@ vector<Book *> BookWrapper::searchByBookCondition(string book_condition, int &bo
 }
 
 vector<Book *> BookWrapper::searchByReturnDate(Date date, int &book_count, vector<Book *> &book_temp){
-	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		if (it->getBorrowing() != nullptr && it->getBorrowing()->getReturnDate() == date || it->getBorrowing()->getReturnDate() > date){
-			book_temp.push_back(&(*it));
+	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
+		if ((*it)->getBorrowing() != nullptr && (*it)->getBorrowing()->getReturnDate() == date || (*it)->getBorrowing()->getReturnDate() > date){
+			book_temp.push_back(*it);
 			cout << "Redni broj knjige: " << book_count + 1 << endl;
 			cout << *it << endl;
 			book_count++;

@@ -10,7 +10,7 @@
 
 	class BookWrapper{
 	private:
-		vector<Book> book_wrap;
+		vector<Book *> book_wrap;
 		string title;
 		string publisherName;
 		vector<string> author;
