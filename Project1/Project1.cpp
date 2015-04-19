@@ -40,6 +40,7 @@ int main(int argc, char const *argv[]){
 	lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();
 	p1.borrowBook(lib, "Naslov2");
+	p1.returnBook(lib, "Naslov2");
 	p2.borrowBook(lib, "Naslov2");
 	p3.borrowBook(lib, "Naslov3");
 	lib.changeCondition("Naslov1");

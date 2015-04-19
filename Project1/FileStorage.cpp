@@ -11,7 +11,6 @@ void FileStorage::removeFile(int membership_id){
 	file_storage.erase(membership_id);
 }
 
-
 File *FileStorage::searchFilesByMembershipID(MyMembershipID *mID){
 	unordered_map<int, File>::iterator it = file_storage.find(mID->getMid());
 	if (it == file_storage.end()) return nullptr;

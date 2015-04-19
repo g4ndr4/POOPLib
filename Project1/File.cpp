@@ -5,6 +5,16 @@ File::File(Person *p){
 	member = p;
 }
 
+void File::returnBook(string title){
+	vector<Borrowing *> borrowing_temp;
+	int borrowing_count = 0;
+	borrowing_collection.returnBook(title, borrowing_count, borrowing_temp);
+	int index = 0;
+	cout << "Unesite redni broj pozajmice koju zelite da razduzite: "; cin >> index;
+	borrowing_temp[index-1]->getBook()->setBorrow(nullptr);
+	borrowing_temp[index-1]->returnBook();
+}
+
 Person &File::getPerson() const{
 	return *member;
 }

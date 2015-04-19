@@ -29,6 +29,7 @@
 			
 			bool joinLibrary(Library &lib);
 			void borrowBook(Library &lib, string title);
+			Person &returnBook(Library &lib, string title);
 			friend ostream &operator<<(ostream &os, const Person &p){
 				os << p.pID << endl;
 				return os;

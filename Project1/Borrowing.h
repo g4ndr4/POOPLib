@@ -21,10 +21,13 @@
 
 		//get
 
+		Book *getBook() const;
 		Date getBorrowedDate() const;
 		Date getReturnDate() const;
 
 		//pomocne metode
+
+		void returnBook();
 
 		friend ostream &operator<<(ostream &os, const Borrowing &b){
 			os << *(b.book) << endl;

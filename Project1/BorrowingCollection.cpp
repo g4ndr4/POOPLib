@@ -5,6 +5,17 @@ bool BorrowingCollection::addBorrowing(Borrowing b){
 	return true;
 }
 
+void BorrowingCollection::returnBook(string title, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
+	for (vector<Borrowing>::iterator it = borrowing_collection.begin(); it != borrowing_collection.end(); ++it){
+		if (it->getBook()->getTitle() == title) {
+			borrowing_temp.push_back(&(*it));
+			cout << endl << "Redni broj pozajmice: " << borrowing_count + 1 << endl << endl;
+			cout << *it << endl;
+			borrowing_count++;
+		}
+	}
+}
+
 vector<Borrowing *> BorrowingCollection::searchByReturnDate(Date current_date, Date borrowing_date, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
 	for (vector<Borrowing>::iterator it = borrowing_collection.begin(); it != borrowing_collection.end(); ++it){
 		if (it->getBorrowedDate() == borrowing_date && current_date > it->getReturnDate()){

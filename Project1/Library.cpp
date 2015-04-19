@@ -125,6 +125,13 @@ int Library::borrowBook(MyMembershipID *mID, string title){
 
 }
 
+void Library::returnBook(MyMembershipID *mID, string title){
+	File *fp = file_storage.searchFilesByMembershipID(mID);
+	if (fp){
+		fp->returnBook(title);
+	}
+}
+
 //pretrage
 
 Book *Library::searchByTitle(string title){
