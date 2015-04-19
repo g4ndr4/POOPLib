@@ -19,6 +19,7 @@
 		//konstruktori i destruktori
 		
 		BookWrapper(Book b);
+		BookWrapper(Book *b);
 		~BookWrapper();
 
 		//set
@@ -31,7 +32,7 @@
 
 		//rad sa BookWrapperom
 
-		void addBook(Book b);
+		void addBook(Book &b);
 		vector<Book *> removeBook(string title, int &book_count, vector<Book *> &book_temp);
 		Book *getBook(int index);
 		
@@ -53,9 +54,9 @@
 			os << bw.title << endl;
 			os << "-------------------------" << endl;
 			int count = 0;
-			for (vector<Book>::const_iterator it = bw.book_wrap.begin(); it != bw.book_wrap.end(); ++it){
+			for (vector<Book *>::const_iterator it = bw.book_wrap.begin(); it != bw.book_wrap.end(); ++it){
 				os << "Redni Broj Knjige: " << count + 1 << endl;
-				os << *it << endl;
+				os << **it << endl;
 				count++;
 			}
 			os << "-------------------------" << endl;

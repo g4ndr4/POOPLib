@@ -8,6 +8,14 @@ BookWrapper::BookWrapper(Book b){
 	author = b.getAuthor();
 	book_wrap.push_back(&b);
 }
+
+BookWrapper::BookWrapper(Book *b){
+	title = b->getTitle();
+	publisherName = b->getPublisherName();
+	author = b->getAuthor();
+	book_wrap.push_back(b);
+}
+
 BookWrapper::~BookWrapper(){}
 
 //set
@@ -26,7 +34,7 @@ vector<string> BookWrapper::getAuthor() const{
 
 //rad sa book_wrap
 
-void BookWrapper::addBook(Book b){
+void BookWrapper::addBook(Book &b){
 	book_wrap.push_back(&b);
 }
 

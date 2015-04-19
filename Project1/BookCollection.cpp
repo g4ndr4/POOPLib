@@ -8,16 +8,14 @@
 
 //rad sa book_collection
 
-void BookCollection::addBook(Book b){
+void BookCollection::addBook(Book &b){
 	auto range = book_collection.equal_range(b.getTitle());
 	for (auto it = range.first; it != range.second; it++){
 		if (it->second.getAuthor() == b.getAuthor() && it->second.getPublisherName() == b.getPublisherName()){
 			it->second.addBook(b);
-			return;
 		}
 	}
-	book_collection.insert(make_pair(b.getTitle(), b));
-	return;
+	book_collection.insert(make_pair(b.getTitle(), &b));
 }
 
 void BookCollection::removeBook(string title){

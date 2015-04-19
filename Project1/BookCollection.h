@@ -23,7 +23,7 @@
 
 			//rad sa book_collection
 
-			void addBook(Book b);
+			void addBook(Book &b);
 			void removeBook(string title);
 			void changeCondition(string title, string book_condition);
 

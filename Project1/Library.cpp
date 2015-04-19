@@ -35,41 +35,17 @@ void Library::addPublisher(string name){
 
 //operacije sa knjigama
 
-Library &Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, Position position, string book_condition){
-	if (SoP->findPublisher(publisher_name) == true){
-		Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, position, book_condition);
-		book_collection.addBook(*b);
-		return *this;
+Library &Library::addBook(Book &b){
+	if (SoP->findPublisher(b.getPublisherName()) == true){
+		book_collection.addBook(b);
 	}
 	else{
 		cout << "Ne postoji izdavac sa tim imenom, da li zelite da dodate izdavaca u listu?" << endl;
 		char confirm;
 		cin >> confirm;
 		if (confirm == 'y' || confirm == 'Y'){
-			SoP->addPublisher(publisher_name);
-			Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, position, book_condition);
-			book_collection.addBook(*b);
-			return *this;
-		}
-	}
-	return *this;
-}
-
-Library &Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, int rID, int cID, int sID, string book_condition){
-	if (SoP->findPublisher(publisher_name) == true){
-		Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, Position(rID, cID, sID), book_condition);
-		book_collection.addBook(*b);
-		return *this;
-	}
-	else{
-		cout << "Ne postoji izdavac sa tim imenom, da li zelite da dodate izdavaca u listu?" << endl;
-		char confirm;
-		cin >> confirm;
-		if (confirm == 'y' || confirm == 'Y'){
-			SoP->addPublisher(publisher_name);
-			Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, Position(rID, cID, sID), book_condition);
-			book_collection.addBook(*b);
-			return *this;
+			SoP->addPublisher(b.getPublisherName());
+			book_collection.addBook(b);
 		}
 	}
 	return *this;

@@ -37,8 +37,7 @@
 			
 			//operacije sa knjigama
 			
-			Library &addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, Position position, string book_condition);
-			Library &addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, int rID, int cID, int sID, string book_condition = "Nova");
+			Library &addBook(Book &b);
 			void removeBook(string title);
 			int borrowBook(MyMembershipID *mID, string title);
 			void returnBook(MyMembershipID *mID, string title);
