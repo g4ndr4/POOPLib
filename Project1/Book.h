@@ -18,8 +18,8 @@ private:
 	string genre;
 	string language;
 	int edition;
-	int ISBN10;
-	int ISBN13;
+	string ISBN10;
+	string ISBN13;
 	Position position;
 	BookCondition bookCondition;
 	Borrowing *borrowing;
@@ -27,8 +27,8 @@ public:
 
 	//konstruktori i destruktori
 
-	Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, int ISBN_10, int ISBN_13, Position pos, string book_condition = "Nova");
-	Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, int ISBN_10, int ISBN_13, int rID, int cID, int sID, string book_condition = "Nova");
+	Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, string ISBN_10, string ISBN_13, Position pos, string book_condition = "Nova");
+	Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, string ISBN_10, string ISBN_13, int rID, int cID, int sID, string book_condition = "Nova");
 
 	//set
 
@@ -44,8 +44,8 @@ public:
 	string getGenre() const;
 	string getLanguage() const;
 	int getEdition() const;
-	int getISBN10() const;
-	int getISBN13() const;
+	string getISBN10() const;
+	string getISBN13() const;
 	Position getPosition() const;
 	string getBookCondition() const;
 	Borrowing *getBorrowing() const;
@@ -69,8 +69,12 @@ public:
 		os << endl;
 		os << "Ime izdavaca: " << b.publisherName << endl;
 		os << "Godina izdanja: " << b.publicationYear << endl;
-		os << "Identifikacioni broj: " << b.regID << endl;
-		os << b.p << endl;
+		os << "Zanr: " << b.genre << endl;
+		os << "Jezik: " << b.language << endl;
+		os << "Izdanje: " << b.edition << endl;
+		os << "ISBN 10: " << b.ISBN10 << endl;
+		os << "ISBN 13: " << b.ISBN13 << endl;
+		os << b.position << endl;
 		os << "Stanje knjige: ";
 		switch (b.bookCondition){
 		case Nova:

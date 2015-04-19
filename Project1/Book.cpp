@@ -3,7 +3,7 @@
 
 //konstruktori i destruktori
 
-Book::Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, int ISBN_10, int ISBN_13, Position pos, string book_condition) : position(pos){
+Book::Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, string ISBN_10, string ISBN_13, Position pos, string book_condition) : position(pos){
 	title = t;
 	author = a;
 	publisherName = publisher_name;
@@ -32,7 +32,7 @@ Book::Book(string t, vector<string> a, string publisher_name, int publication_ye
 	else bookCondition = Nova;
 }
 
-Book::Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, int ISBN_10, int ISBN_13, int rID, int cID, int sID, string book_condition) : position(rID, cID, sID){
+Book::Book(string t, vector<string> a, string publisher_name, int publication_year, string g, string l, int e, string ISBN_10, string ISBN_13, int rID, int cID, int sID, string book_condition) : position(rID, cID, sID){
 	title = t;
 	author = a;
 	publisherName = publisher_name;
@@ -116,11 +116,11 @@ int Book::getEdition() const{
 	return edition;
 }
 
-int Book::getISBN10() const{
+string Book::getISBN10() const{
 	return ISBN10;
 }
 
-int Book::getISBN13() const{
+string Book::getISBN13() const{
 	return ISBN13;
 }
 

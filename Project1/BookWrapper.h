@@ -44,7 +44,7 @@
 
 		vector<Book *> searchByBookCondition(string book_condition, int &book_count, vector<Book *> &book_temp);
 
-		vector<Book *> searchByReturnDate(ReturnDate date, int &book_count, vector<Book *> &book_temp);
+		vector<Book *> searchByReturnDate(Date date, int &book_count, vector<Book *> &book_temp);
 
 		//pomocne metode
 

@@ -16,9 +16,9 @@
 			
 			File *searchFilesByMembershipID(MyMembershipID *mID);
 
-			Borrowing *searchByReturnDate(ReturnDate current_date, BorrowedDate borrowing_date);
+			Borrowing *searchByReturnDate(Date current_date, Date borrowing_date);
 
-			Borrowing *searchByPeriod(BorrowedDate date1, BorrowedDate date2);
+			Borrowing *searchByPeriod(Date date1, Date date2);
 	};
 	
 #endif

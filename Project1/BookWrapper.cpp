@@ -92,9 +92,9 @@ vector<Book *> BookWrapper::searchByBookCondition(string book_condition, int &bo
 	return book_temp;
 }
 
-vector<Book *> BookWrapper::searchByReturnDate(ReturnDate date, int &book_count, vector<Book *> &book_temp){
+vector<Book *> BookWrapper::searchByReturnDate(Date date, int &book_count, vector<Book *> &book_temp){
 	for (vector<Book>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		if (it->getBorrowing() != nullptr && it->getBorrowing()->getDate().getReturnDate() == date || it->getBorrowing()->getDate().getReturnDate() > date){
+		if (it->getBorrowing() != nullptr && it->getBorrowing()->getReturnDate() == date || it->getBorrowing()->getReturnDate() > date){
 			book_temp.push_back(&(*it));
 			cout << "Redni broj knjige: " << book_count + 1 << endl;
 			cout << *it << endl;

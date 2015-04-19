@@ -35,11 +35,11 @@ void Library::addPublisher(string name){
 
 //operacije sa knjigama
 
-void Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, int ISBN_10, int ISBN_13, Position position, string book_condition){
+Library &Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, Position position, string book_condition){
 	if (SoP->findPublisher(publisher_name) == true){
 		Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, position, book_condition);
 		book_collection.addBook(*b);
-		return;
+		return *this;
 	}
 	else{
 		cout << "Ne postoji izdavac sa tim imenom, da li zelite da dodate izdavaca u listu?" << endl;
@@ -49,16 +49,17 @@ void Library::addBook(string title, vector<string> author, string publisher_name
 			SoP->addPublisher(publisher_name);
 			Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, position, book_condition);
 			book_collection.addBook(*b);
-			return;
+			return *this;
 		}
 	}
-	return;
+	return *this;
 }
 
-void Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, int ISBN_10, int ISBN_13, int rID, int cID, int sID, string book_condition){
+Library &Library::addBook(string title, vector<string> author, string publisher_name, int publication_year, string genre, string language, int edition, string ISBN_10, string ISBN_13, int rID, int cID, int sID, string book_condition){
 	if (SoP->findPublisher(publisher_name) == true){
 		Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, Position(rID, cID, sID), book_condition);
 		book_collection.addBook(*b);
+		return *this;
 	}
 	else{
 		cout << "Ne postoji izdavac sa tim imenom, da li zelite da dodate izdavaca u listu?" << endl;
@@ -68,9 +69,10 @@ void Library::addBook(string title, vector<string> author, string publisher_name
 			SoP->addPublisher(publisher_name);
 			Book *b = new Book(title, author, publisher_name, publication_year, genre, language, edition, ISBN_10, ISBN_13, Position(rID, cID, sID), book_condition);
 			book_collection.addBook(*b);
+			return *this;
 		}
 	}
-	return;
+	return *this;
 }
 
 void Library::removeBook(string title){
@@ -94,58 +96,25 @@ void Library::changeCondition(string title){
 
 //Z8
 int Library::borrowBook(MyMembershipID *mID, string title){
-	//cout << "Unesite dan: "; cin >> day;
-	//cout << "Unesite mesec: "; cin >> month;
-	//cout << "Unesite godinu: "; cin >> year;
+	int day, month, year;
+	
+	cout << "Unesite dan: "; cin >> day;
+	cout << "Unesite mesec: "; cin >> month;
+	cout << "Unesite godinu: "; cin >> year;
+	Date current_date(day, month, year);
+
 	File *fp = file_storage.searchFilesByMembershipID(mID);
 	if (fp){
 		Book *bp = book_collection.searchBorrow(title);
 		if (bp){
 			//Z9 
 			int period = 0;
-			ReturnDate *rdp;
+			Date *rdp;
 			period = 20;
 			// cout << "Unesite period pozajmice: "; cin >> period;
-			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10){
-				if ((day + period) > 31){
-					rdp = new ReturnDate((day + period - 31), month + 1, year);
-				}
-				else rdp = new ReturnDate((day + period), month, year);
-			}
-			else if (month == 4 || month == 6 || month == 9 || month == 11){
-				if ((day + period) > 30){
-					rdp = new ReturnDate((day + period - 30), month + 1, year);
-				}
-				else rdp = new ReturnDate((day + period), month, year);
-			}
-			else if (month == 12){
-				if ((day + period) > 31){
-					rdp = new ReturnDate((day + period - 31), 1, year + 1);
-				}
-				else rdp = new ReturnDate((day + period), month, year);
-			}
-			else{
-				if ((day + period) <= 28){
-					rdp = new ReturnDate((day + period), month, year);
-
-				}
-				else{
-					if (year % 4 == 0 || year % 400 == 0){
-						if ((day + period) > 29){
-							rdp = new ReturnDate((day + period - 29), month + 1, year);
-						}
-						else rdp = new ReturnDate((day + period), month, year);
-					}
-					else{
-						if ((day + period) > 28){
-							rdp = new ReturnDate((day + period - 28), month + 1, year);
-						}
-						else rdp = new ReturnDate((day + period), month, year);
-					}
-				}
-			}
-			Date date(BorrowedDate(day, month, year), *rdp);
-			Borrowing *b = new Borrowing(date, bp);
+			rdp = current_date.calculateReturnDate(period);
+			Date return_date(*rdp);
+			Borrowing *b = new Borrowing(current_date, return_date, bp);
 			bp->setBorrow(b);
 			fp->addBorrowing(*b);
 			return 1;
@@ -179,19 +148,19 @@ Book *Library::searchByBookCondition(string book_condition){
 }
 
 Book *Library::searchByReturnDate(int day, int month, int year){
-	ReturnDate date(day, month, year);
+	Date date(day, month, year);
 	return book_collection.searchByReturnDate(date);
 }
 
 Borrowing *Library::searchFilesByReturnDate(int cday, int cmonth, int cyear, int bday, int bmonth, int byear){
-	ReturnDate current_date(cday, cmonth, cyear);
-	BorrowedDate borrowing_date(bday, bmonth, byear);
+	Date current_date(cday, cmonth, cyear);
+	Date borrowing_date(bday, bmonth, byear);
 	return file_storage.searchByReturnDate(current_date, borrowing_date);
 }
 
 Borrowing *Library::searchFilesByPeriod(int d1, int m1, int y1, int d2, int m2, int y2){
-	BorrowedDate date1(d1, m1, y1);
-	BorrowedDate date2(d2, m2, y2);
+	Date date1(d1, m1, y1);
+	Date date2(d2, m2, y2);
 
 	return file_storage.searchByPeriod(date1, date2);
 }

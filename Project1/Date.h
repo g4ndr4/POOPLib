@@ -27,6 +27,8 @@
 
 		//pomocne metode
 
+		Date *calculateReturnDate(int period) const;
+
 		friend bool operator == (Date &d1, Date &d2){
 			if (d1.getDay() == d2.getDay() && d1.getMonth() == d2.getMonth() && d1.getYear() == d2.getYear()) return true;
 			else return false;
@@ -38,7 +40,7 @@
 		}
 
 		friend bool operator < (Date &d1, Date &d2){	
-			if (d1.getYear() < d2.getYear() || (d1.getYear() == d2.getYear() && d1.getMonth() < d2.getMonth()) || (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDay() < d2.getDay()) return true;
+			if (d1.getYear() < d2.getYear() || (d1.getYear() == d2.getYear() && d1.getMonth() < d2.getMonth()) || (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDay() < d2.getDay())) return true;
 			else return false;
 		}
 

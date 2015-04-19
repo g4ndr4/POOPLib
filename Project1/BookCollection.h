@@ -35,9 +35,9 @@
 			Book *searchByTitle(string title, int publicationYear, string publisherName);
 
 			Book *searchByBookCondition(string book_condition);
-			Book *searchByReturnDate(ReturnDate date);
+			Book *searchByReturnDate(Date date);
 
-			File *searchFilesByReturnDate(ReturnDate date);
+			File *searchFilesByReturnDate(Date date);
 			//pomocne metode
 
 			void history();

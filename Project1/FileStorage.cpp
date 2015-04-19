@@ -18,7 +18,7 @@ File *FileStorage::searchFilesByMembershipID(MyMembershipID *mID){
 	else return &(it->second);
 }
 
-Borrowing *FileStorage::searchByReturnDate(ReturnDate current_date, BorrowedDate borrowing_date){
+Borrowing *FileStorage::searchByReturnDate(Date current_date, Date borrowing_date){
 	vector<Borrowing *>borrowing_temp;
 	int borrowing_count = 0;
 	for (unordered_map<int, File>::iterator it = file_storage.begin(); it != file_storage.end(); ++it){
@@ -34,7 +34,7 @@ Borrowing *FileStorage::searchByReturnDate(ReturnDate current_date, BorrowedDate
 	else return borrowing_temp[index - 1];
 }
 
-Borrowing *FileStorage::searchByPeriod(BorrowedDate date1, BorrowedDate date2){
+Borrowing *FileStorage::searchByPeriod(Date date1, Date date2){
 	vector<Borrowing *>borrowing_temp;
 	int borrowing_count = 0;
 	for (unordered_map<int, File>::iterator it = file_storage.begin(); it != file_storage.end(); ++it){

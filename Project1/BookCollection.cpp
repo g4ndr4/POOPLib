@@ -108,7 +108,7 @@ Book *BookCollection::searchByBookCondition(string book_condition){
 	else return book_temp[index - 1];
 }
 
-Book *BookCollection::searchByReturnDate(ReturnDate date){
+Book *BookCollection::searchByReturnDate(Date date){
 	int book_count = 0;
 	vector<Book *> book_temp;
 	for (unordered_multimap<string, BookWrapper>::iterator it = book_collection.begin(); it != book_collection.end(); ++it){
