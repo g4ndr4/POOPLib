@@ -69,8 +69,6 @@ void Library::changeCondition(string title){
 	}
 }
 
-
-//Z8
 int Library::borrowBook(MyMembershipID *mID, string title){
 	int day, month, year;
 	
@@ -83,11 +81,9 @@ int Library::borrowBook(MyMembershipID *mID, string title){
 	if (fp){
 		Book *bp = book_collection.searchBorrow(title);
 		if (bp){
-			//Z9 
 			int period = 0;
 			Date *rdp;
-			period = 20;
-			// cout << "Unesite period pozajmice: "; cin >> period;
+			cout << "Unesite period pozajmice: "; cin >> period;
 			rdp = current_date.calculateReturnDate(period);
 			Date return_date(*rdp);
 			Borrowing *b = new Borrowing(current_date, return_date, bp);
