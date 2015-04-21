@@ -3,6 +3,7 @@
 #include "Book.h"
 #include "Person.h"
 #include "SetOfPublishers.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -65,6 +66,12 @@ int main(int argc, char const *argv[]){
 	lib.bookHistory();
 	int i;
 	cin >> i;
+
+	Menu menu(lib);
+	bool terminate = false;
+	while (!terminate){
+		menu.select();
+	}
 
 	return 0;
 }
