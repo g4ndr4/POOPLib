@@ -9,6 +9,7 @@
 #include "OperationEngine.h"
 #include "BookResult.h"
 #include "MemberResult.h"
+#include "SearchByAuthors.h"
 
 using namespace std;
 
@@ -52,12 +53,17 @@ int main(int argc, char const *argv[]){
 	
 	OperationEngine operation_engine;
 	string s;
-	cin >> s;
+	//cin >> s;
 
-	SearchBooksByTitle sbt(s, &lib);
-	Result *r = operation_engine.submitOperation(&sbt);
-	PrintResults pr(r, &lib);
-	operation_engine.submitOperation(&pr);
+	//SearchBooksByTitle sbt(s, &lib);
+	//Result *r = operation_engine.submitOperation(&sbt);
+	//PrintResults pr(r, &lib);
+	//operation_engine.submitOperation(&pr);
+	cin >> s;
+	SearchByAuthors sba(s, &lib);
+	Result *r = operation_engine.submitOperation(&sba);
+	PrintResults pr1(r, &lib);
+	operation_engine.submitOperation(&pr1);
 //	lib.addBook("Zbirka zadataka iz matematike", autor4, "Zavod za udzbenike", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	//lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();

@@ -196,3 +196,6 @@ FakesAssemblies/
 *.opt
 Project1/Project1.vcxproj.filters
 Project1/Project1.vcxproj
+
+
+Debug/

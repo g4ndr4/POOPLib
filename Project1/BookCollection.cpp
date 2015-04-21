@@ -67,6 +67,17 @@ vector<Book *> *BookCollection::searchByTitle(string title){
 	return result;
 }
 
+vector<Book *> *BookCollection::searchByAuthor(string author){
+	regex reg(".*" + author + ".*");
+	vector<Book *> *result = new vector<Book *>;
+	for (auto it : book_collection){
+		for (auto iter : it.second.getAuthor()){
+			if (regex_search(iter, reg)) it.second.searchByTitle(result);
+		}
+	}
+	return result;
+}
+
 Book *BookCollection::searchByTitle(string title, int publicationYear, string publisherName){
 	int book_count = 0;
 	vector<Book*> book_temp;

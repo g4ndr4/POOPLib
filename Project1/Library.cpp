@@ -110,6 +110,10 @@ vector<Book *> *Library::searchByTitle(string title){
 	return book_collection.searchByTitle(title);
 }
 
+vector<Book *> *Library::searchByAuthor(string author){
+	return book_collection.searchByAuthor(author);
+}
+
 Book *Library::searchByTitle(string title, int publicationYear, string publisherName){
 	return book_collection.searchByTitle(title, publicationYear, publisherName);
 }

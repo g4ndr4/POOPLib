@@ -50,6 +50,7 @@
 			//Pretrage
 			
 			vector<Book *> *searchByTitle(string title);
+			vector<Book *> *searchByAuthor(string author);
 			Book *searchByTitle(string title, int publicationYear, string publisherName);
 			
 			Book *searchByReturnDate(int day, int month, int year);

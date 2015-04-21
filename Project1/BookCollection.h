@@ -33,6 +33,7 @@
 			Book *searchBorrow(string title);
 
 			vector<Book *> *searchByTitle(string title);
+			vector<Book *> *searchByAuthor(string author);
 			Book *searchByTitle(string title, int publicationYear, string publisherName);
 
 			Book *searchByBookCondition(string book_condition);
