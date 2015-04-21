@@ -2,6 +2,7 @@
 #ifndef _BookCollection_H_
 #define _BookCollection_H_
 	#include "iostream"
+	#include <regex>
 	#include "Book.h"
 	#include "BookWrapper.h"
 	#include "string"
@@ -25,13 +26,13 @@
 
 			void addBook(Book &b);
 			void removeBook(string title);
-			void changeCondition(string title, string book_condition);
+			//void changeCondition(string title, string book_condition);
 
 			//pretrage
 
 			Book *searchBorrow(string title);
 
-			Book *searchByTitle(string title);
+			vector<Book *> *searchByTitle(string title);
 			Book *searchByTitle(string title, int publicationYear, string publisherName);
 
 			Book *searchByBookCondition(string book_condition);

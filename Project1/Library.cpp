@@ -55,7 +55,7 @@ void Library::removeBook(string title){
 	book_collection.removeBook(title);
 }
 
-void Library::changeCondition(string title){
+/*void Library::changeCondition(string title){
 	string book_condition;
 	cout << "Unesite novo stanje: "; cin >> book_condition;
 	if (book_condition == "Nova") book_collection.changeCondition(title, "Nova");
@@ -67,7 +67,7 @@ void Library::changeCondition(string title){
 		cout << "GRESKA! Uneli ste nepostojece stanje!" << endl;
 		return;
 	}
-}
+}*/
 
 int Library::borrowBook(MyMembershipID *mID, string title){
 	int day, month, year;
@@ -106,7 +106,7 @@ void Library::returnBook(MyMembershipID *mID, string title){
 
 //pretrage
 
-Book *Library::searchByTitle(string title){
+vector<Book *> *Library::searchByTitle(string title){
 	return book_collection.searchByTitle(title);
 }
 

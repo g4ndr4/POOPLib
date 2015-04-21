@@ -68,14 +68,10 @@ vector<Book*> BookWrapper::searchBorrow(string title, int &book_count, vector<Bo
 	return book_temp;
 }
 
-vector<Book*> BookWrapper::searchByTitle(string title, int &book_count, vector<Book *> &book_temp){
+void BookWrapper::searchByTitle(vector<Book *> *result){
 	for (vector<Book *>::iterator it = book_wrap.begin(); it != book_wrap.end(); ++it){
-		book_temp.push_back(*it);
-		cout << "Redni Broj Knjige: " << book_count + 1 << endl << endl;
-		cout << *it << endl;
-		book_count++;
+		result->push_back(*it);
 	}
-	return book_temp;
 }
 
 vector<Book *> BookWrapper::searchByTitle(string title, int publicationYear, string publisherName, int &book_count, vector<Book *> &book_temp){

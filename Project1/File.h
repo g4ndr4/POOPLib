@@ -25,6 +25,10 @@
 
 			vector<Borrowing *> searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
 			bool addBorrowing(Borrowing b);
+
+			friend ostream &operator<<(ostream &os, const File &f){
+				return os;
+			}
 	};
 
 #endif

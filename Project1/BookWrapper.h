@@ -40,7 +40,7 @@
 
 		vector<Book *> searchBorrow(string title, int &book_count, vector<Book *> &book_temp);
 
-		vector<Book *> searchByTitle(string title, int &book_count, vector<Book *> &book_temp);
+		void searchByTitle(vector<Book *> *result);
 		vector<Book *> searchByTitle(string title, int publicationYear, string publisherName, int &book_count, vector<Book *> &book_temp);
 
 		vector<Book *> searchByBookCondition(string book_condition, int &book_count, vector<Book *> &book_temp);

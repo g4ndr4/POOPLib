@@ -2,6 +2,10 @@
 #ifndef _Library_H_
 #define _Library_H_
 	#include "iostream"
+	#include <regex>
+	#include "Result.h"
+	#include "BookResult.h"
+	#include "MemberResult.h"
 	#include "FileStorage.h"
 	class Person;
 	#include "MyMembershipID.h"
@@ -41,11 +45,11 @@
 			void removeBook(string title);
 			int borrowBook(MyMembershipID *mID, string title);
 			void returnBook(MyMembershipID *mID, string title);
-			void changeCondition(string title);
+			//void changeCondition(string title);
 			
 			//Pretrage
 			
-			Book *searchByTitle(string title);
+			vector<Book *> *searchByTitle(string title);
 			Book *searchByTitle(string title, int publicationYear, string publisherName);
 			
 			Book *searchByReturnDate(int day, int month, int year);

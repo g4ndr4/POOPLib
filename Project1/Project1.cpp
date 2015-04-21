@@ -4,6 +4,11 @@
 #include "Person.h"
 #include "SetOfPublishers.h"
 #include "Menu.h"
+#include "SearchBooksByTitle.h"
+#include "PrintResults.h"
+#include "OperationEngine.h"
+#include "BookResult.h"
+#include "MemberResult.h"
 
 using namespace std;
 
@@ -44,10 +49,15 @@ int main(int argc, char const *argv[]){
 	Book *bp4 = &b4;
 	Book *bp5 = &b5;
 	Book *bp6 = &b6;
-	vector<string> autor4;
-	vector<string> autor5;
-	autor4.push_back("Vene T. Bogoslavov");
-	autor5.push_back("Srdjan Ognjanovic"); 
+	
+	OperationEngine operation_engine;
+	string s;
+	cin >> s;
+
+	SearchBooksByTitle sbt(s, &lib);
+	Result *r = operation_engine.submitOperation(&sbt);
+	PrintResults pr(r, &lib);
+	operation_engine.submitOperation(&pr);
 //	lib.addBook("Zbirka zadataka iz matematike", autor4, "Zavod za udzbenike", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	//lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();
@@ -55,7 +65,7 @@ int main(int argc, char const *argv[]){
 	p1.returnBook(lib, "Naslov2");
 	p2.borrowBook(lib, "Naslov2");
 	p3.borrowBook(lib, "Naslov3");
-	lib.changeCondition("Naslov1");
+	//lib.changeCondition("Naslov1");
 	lib.searchFilesByReturnDate(17, 3, 2015, 1, 1, 2015);
 	lib.searchByBookCondition("Malo_Ostecena");
 

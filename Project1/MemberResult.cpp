@@ -1,7 +1,7 @@
 #include "MemberResult.h"
 
 
-MemberResult::MemberResult(){}
+MemberResult::MemberResult() : Result(2){}
 
 
 MemberResult::~MemberResult(){}

@@ -3,7 +3,10 @@
 #define _Operation_H_
 	#include "Library.h"	
 	#include "Result.h"
+	#include "BookResult.h"
+	#include "MemberResult.h"
 	class Operation{
+	protected:
 		Library *library;
 	public:
 		Operation(Library *l);

@@ -15,7 +15,7 @@
 		void addFile(File *f);
 
 		friend ostream &operator<<(ostream &os, const MemberResult &mr){
-			for (auto it : mr.result){
+			for (auto const it : mr.result){
 				os << *it << endl;
 			}
 
