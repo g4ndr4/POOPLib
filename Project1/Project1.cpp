@@ -10,6 +10,7 @@
 #include "BookResult.h"
 #include "MemberResult.h"
 #include "SearchByAuthors.h"
+#include "SearchMembersByReturnDate.h"
 
 using namespace std;
 
@@ -59,20 +60,25 @@ int main(int argc, char const *argv[]){
 	//Result *r = operation_engine.submitOperation(&sbt);
 	//PrintResults pr(r, &lib);
 	//operation_engine.submitOperation(&pr);
-	cin >> s;
-	SearchByAuthors sba(s, &lib);
-	Result *r = operation_engine.submitOperation(&sba);
+	//cin >> s;
+	//SearchByAuthors sba(s, &lib);
+	//Result *r = operation_engine.submitOperation(&sba);
+	//PrintResults pr1(r, &lib);
+	//operation_engine.submitOperation(&pr1);
+	p1.borrowBook(lib, "Naslov2");
+	SearchMembersByReturnDate sbrd(21, 04, 2015, 1, 04, 2015, &lib);
+	Result *r = operation_engine.submitOperation(&sbrd);
 	PrintResults pr1(r, &lib);
 	operation_engine.submitOperation(&pr1);
 //	lib.addBook("Zbirka zadataka iz matematike", autor4, "Zavod za udzbenike", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	//lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();
-	p1.borrowBook(lib, "Naslov2");
+	
 	p1.returnBook(lib, "Naslov2");
 	p2.borrowBook(lib, "Naslov2");
 	p3.borrowBook(lib, "Naslov3");
 	//lib.changeCondition("Naslov1");
-	lib.searchFilesByReturnDate(17, 3, 2015, 1, 1, 2015);
+	//lib.searchFilesByReturnDate(17, 3, 2015, 1, 1, 2015);
 	lib.searchByBookCondition("Malo_Ostecena");
 
 	lib.bookHistory();

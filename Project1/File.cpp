@@ -24,9 +24,9 @@ bool File::addBorrowing(Borrowing b){
 	return true;
 }
 
-vector<Borrowing *> File::searchByReturnDate(Date current_date, Date borrowing_date, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
-	borrowing_collection.searchByReturnDate(current_date, borrowing_date, borrowing_count, borrowing_temp);
-	return borrowing_temp;
+File *File::searchByReturnDate(Date current_date, Date borrowing_date){
+	if (borrowing_collection.searchByReturnDate(current_date, borrowing_date)) return this;
+	else return nullptr;
 }
 
 vector<Borrowing *> File::searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp){

@@ -5,20 +5,21 @@
 	#include "vector"
 	#include <iostream>
 	#include "File.h"
+	using namespace std;
 	class MemberResult : public Result{
 	private:
-		vector<File *> result;
+		vector<File *> *result;
 	public:
 		MemberResult();
-		~MemberResult();
+		MemberResult(vector<File *> *r);
+		virtual ~MemberResult();
 
 		void addFile(File *f);
 
 		friend ostream &operator<<(ostream &os, const MemberResult &mr){
-			for (auto const it : mr.result){
+			for (auto it : *mr.result){
 				os << *it << endl;
 			}
-
 			return os;
 		}
 	};

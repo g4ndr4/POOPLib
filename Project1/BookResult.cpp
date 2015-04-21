@@ -1,6 +1,5 @@
 #include "BookResult.h"
 
-
 BookResult::BookResult() : Result(1){}
 
 BookResult::BookResult(vector<Book *> *r) : Result(1){

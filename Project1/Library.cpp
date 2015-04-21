@@ -135,9 +135,7 @@ Book *Library::searchByReturnDate(int day, int month, int year){
 	return book_collection.searchByReturnDate(date);
 }
 
-Borrowing *Library::searchFilesByReturnDate(int cday, int cmonth, int cyear, int bday, int bmonth, int byear){
-	Date current_date(cday, cmonth, cyear);
-	Date borrowing_date(bday, bmonth, byear);
+vector<File *> *Library::searchFilesByReturnDate(Date current_date, Date borrowing_date){
 	return file_storage.searchByReturnDate(current_date, borrowing_date);
 }
 

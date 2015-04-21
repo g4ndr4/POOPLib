@@ -16,7 +16,7 @@
 			
 			File *searchFilesByMembershipID(MyMembershipID *mID);
 
-			Borrowing *searchByReturnDate(Date current_date, Date borrowing_date);
+			vector<File *> *searchByReturnDate(Date current_date, Date borrowing_date);
 
 			Borrowing *searchByPeriod(Date date1, Date date2);
 	};

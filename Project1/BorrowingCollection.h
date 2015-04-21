@@ -20,7 +20,7 @@
 
 		void returnBook(string title, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
 
-		vector<Borrowing *> searchByReturnDate(Date current_date, Date borrowing_date, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
+		bool searchByReturnDate(Date current_date, Date borrowing_date);
 
 		vector<Borrowing *> searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
 		//Z6.

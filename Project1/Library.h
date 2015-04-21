@@ -57,7 +57,7 @@
 
 			Book *searchByBookCondition(string book_condition);
 
-			Borrowing *searchFilesByReturnDate(int cday, int cmonth, int cyear, int bday, int bmonth, int byear);
+			vector<File *> *searchFilesByReturnDate(Date current_date, Date borrowing_date);
 
 			Borrowing *searchFilesByPeriod(int d1, int m1, int y1, int d2, int m2, int y2);
 
