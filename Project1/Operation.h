@@ -1,10 +1,12 @@
 #pragma once
 #ifndef _Operation_H_
 #define _Operation_H_
+	#include "Library.h"	
 	#include "Result.h"
 	class Operation{
+		Library *library;
 	public:
-		Operation();
+		Operation(Library *l);
 		virtual ~Operation();
 
 		virtual void log() = 0;

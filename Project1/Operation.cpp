@@ -1,5 +1,7 @@
 #include "Operation.h"
 
-Operation::Operation(){}
+Operation::Operation(Library *l){
+	library = l;
+}
 
 Operation::~Operation(){}
