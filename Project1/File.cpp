@@ -29,7 +29,7 @@ File *File::searchByReturnDate(Date current_date, Date borrowing_date){
 	else return nullptr;
 }
 
-vector<Borrowing *> File::searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
-	borrowing_collection.searchByPeriod(date1, date2, borrowing_count, borrowing_temp);
-	return borrowing_temp;
+File *File::searchByPeriod(Date period_begin, Date period_end){
+	if (borrowing_collection.searchByPeriod(period_begin, period_end)) return this;
+	else return nullptr;
 }

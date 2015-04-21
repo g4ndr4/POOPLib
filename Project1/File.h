@@ -23,7 +23,7 @@
 
 			File *searchByReturnDate(Date current_date, Date borrowing_date);
 
-			vector<Borrowing *> searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
+			File *searchByPeriod(Date period_begin, Date period_end);
 			bool addBorrowing(Borrowing b);
 
 			friend ostream &operator<<(ostream &os, const File &f){

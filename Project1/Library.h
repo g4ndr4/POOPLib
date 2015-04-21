@@ -59,7 +59,7 @@
 
 			vector<File *> *searchFilesByReturnDate(Date current_date, Date borrowing_date);
 
-			Borrowing *searchFilesByPeriod(int d1, int m1, int y1, int d2, int m2, int y2);
+			vector<File *> *searchFilesByPeriod(Date period_begin, Date period_end);
 
 			//Pomocne metode
 

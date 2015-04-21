@@ -18,7 +18,7 @@
 
 			vector<File *> *searchByReturnDate(Date current_date, Date borrowing_date);
 
-			Borrowing *searchByPeriod(Date date1, Date date2);
+			vector<File *> *searchByPeriod(Date period_begin, Date period_end);
 	};
 	
 #endif

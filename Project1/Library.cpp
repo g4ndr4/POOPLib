@@ -139,11 +139,8 @@ vector<File *> *Library::searchFilesByReturnDate(Date current_date, Date borrowi
 	return file_storage.searchByReturnDate(current_date, borrowing_date);
 }
 
-Borrowing *Library::searchFilesByPeriod(int d1, int m1, int y1, int d2, int m2, int y2){
-	Date date1(d1, m1, y1);
-	Date date2(d2, m2, y2);
-
-	return file_storage.searchByPeriod(date1, date2);
+vector<File *> *Library::searchFilesByPeriod(Date period_begin, Date period_end){
+	return file_storage.searchByPeriod(period_begin, period_end);
 }
 
 //pomocne metode

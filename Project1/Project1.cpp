@@ -11,6 +11,7 @@
 #include "MemberResult.h"
 #include "SearchByAuthors.h"
 #include "SearchMembersByReturnDate.h"
+#include "SearchMembersByPeriod.h"
 
 using namespace std;
 
@@ -66,8 +67,9 @@ int main(int argc, char const *argv[]){
 	//PrintResults pr1(r, &lib);
 	//operation_engine.submitOperation(&pr1);
 	p1.borrowBook(lib, "Naslov2");
-	SearchMembersByReturnDate sbrd(21, 04, 2015, 1, 04, 2015, &lib);
-	Result *r = operation_engine.submitOperation(&sbrd);
+	p2.borrowBook(lib, "Naslov2");
+	SearchMembersByPeriod sbpr(1, 04, 2015, 30, 04, 2015, &lib);
+	Result *r = operation_engine.submitOperation(&sbpr);
 	PrintResults pr1(r, &lib);
 	operation_engine.submitOperation(&pr1);
 //	lib.addBook("Zbirka zadataka iz matematike", autor4, "Zavod za udzbenike", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");

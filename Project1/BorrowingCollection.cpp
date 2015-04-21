@@ -21,14 +21,9 @@ bool BorrowingCollection::searchByReturnDate(Date current_date, Date borrowing_d
 	return false;
 }
 
-vector<Borrowing *> BorrowingCollection::searchByPeriod(Date date1, Date date2, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
-	for (vector<Borrowing>::iterator it = borrowing_collection.begin(); it != borrowing_collection.end(); ++it){
-		if (date1 == it->getBorrowedDate() || date2 == it->getBorrowedDate() || (date1 < it->getBorrowedDate() && it->getBorrowedDate() < date2) || (date1 > it->getBorrowedDate() && it->getBorrowedDate() > date2)){
-			borrowing_temp.push_back(&(*it));
-			cout << "Redni broj iznajmljivanja: " << borrowing_count + 1 << endl;
-			cout << *it << endl;
-			borrowing_count++;
-		}
-	}
-	return borrowing_temp;
+bool BorrowingCollection::searchByPeriod(Date period_begin, Date period_end){
+	for (auto it : borrowing_collection) if (period_begin == it.getBorrowedDate() || period_end == it.getBorrowedDate() ||
+											(period_begin < it.getBorrowedDate() && it.getBorrowedDate() < period_end) ||
+											(period_begin > it.getBorrowedDate() && it.getBorrowedDate() > period_end)) return true;
+	return false;
 }
