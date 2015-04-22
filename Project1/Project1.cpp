@@ -14,6 +14,7 @@
 #include "SearchMembersByPeriod.h"
 #include "SubscribeMember.h"
 #include "UnsubscribeMember.h"
+#include "AddBook.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ int main(int argc, char const *argv[]){
 
 	SetOfPublishers *sp = SetOfPublishers::getInstance();
 	Library lib(sp);
+	OperationEngine operation_engine;
 
 	Person p1("Pera", "Peric", 123);
 	Person p2("Milan", "Milic", 456);
@@ -47,7 +49,9 @@ int main(int argc, char const *argv[]){
 	Book b4("Naslov2", autor1, "Izdavac2", 2001, "zanr", "jezik", 1, "ISBN10", "ISBN13", 2, 2, 4, "Potrebno_Zameniti");
 	Book b5("Naslov2", autor1, "Izdavac2", 2001, "zanr", "jezik", 1, "ISBN10", "ISBN13", 2, 2, 4, "Potrebno_Zameniti");
 	Book b6("Naslov3", autor3, "Izdavac1", 200, "zanr", "jezik", 1, "ISBN10", "ISBN13", 4, 4, 4);
-	lib.addBook(b1).addBook(b2).addBook(b3).addBook(b4).addBook(b5).addBook(b6);
+	AddBook ab(&b1, &lib);
+	operation_engine.submitOperation(&ab);
+	lib.addBook(b2).addBook(b3).addBook(b4).addBook(b5).addBook(b6);
 	Book *bp1 = &b1;
 	Book *bp2 = &b2;
 	Book *bp3 = &b3;
@@ -55,7 +59,7 @@ int main(int argc, char const *argv[]){
 	Book *bp5 = &b5;
 	Book *bp6 = &b6;
 	
-	OperationEngine operation_engine;
+	
 	string s;
 	//cin >> s;
 
