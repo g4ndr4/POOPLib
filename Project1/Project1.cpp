@@ -13,6 +13,7 @@
 #include "SearchMembersByReturnDate.h"
 #include "SearchMembersByPeriod.h"
 #include "SubscribeMember.h"
+#include "UnsubscribeMember.h"
 
 using namespace std;
 
@@ -70,6 +71,15 @@ int main(int argc, char const *argv[]){
 	Person p5("Djordano", "Bruno", 1244);
 	SubscribeMember sm(&p5, &lib);
 	operation_engine.submitOperation(&sm);
+	UnsubscribeMember um(5, &lib);
+	operation_engine.submitOperation(&um);
+	operation_engine.undo(&um);
+	UnsubscribeMember um1(5, &lib);
+	operation_engine.submitOperation(&um1);
+	operation_engine.undo(&um1);
+	UnsubscribeMember um2(5, &lib);
+	operation_engine.submitOperation(&um2);
+	
 	p5.borrowBook(lib, "Naslov2");
 	p2.borrowBook(lib, "Naslov2");
 	SearchMembersByPeriod sbpr(1, 04, 2015, 30, 04, 2015, &lib);

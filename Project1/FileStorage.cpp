@@ -11,11 +11,39 @@ void FileStorage::removeFile(int membership_id){
 	file_storage.erase(membership_id);
 }
 
+void FileStorage::setMember(bool status, int memberhsip_id){
+	unordered_map<int, File>::iterator it = file_storage.find(memberhsip_id);
+	if (it == file_storage.end()) return;
+	it->second.setMember(status);
+	return;
+}
+
 bool FileStorage::searchForExistingSubscription(long jmbg){
-	for (auto it : file_storage) if (it.second.getPerson().getPID().getJmbg() == jmbg) return true;
+	for (auto it : file_storage) if (it.second.getPerson()->getPID().getJmbg() == jmbg) return true;
 	return false;
 }
 
+Person *FileStorage::unsubscribeMember(int membership_id){
+	unordered_map<int, File>::iterator it = file_storage.find(membership_id);
+	if (it == file_storage.end()) return nullptr;
+	if (it->second.isMember() == false){
+		cout << "Niste clan!" << endl;
+		return nullptr;
+	}
+	if (it->second.hasActiveBorrowings()){
+		cout << "Imate jos nerazduzenih pozajmica!" << endl;
+		return nullptr;
+	}
+	it->second.setMember(false);
+	return it->second.getPerson();
+}
+
+bool FileStorage::isMember(int membership_id){
+	unordered_map<int, File>::iterator it = file_storage.find(membership_id);
+	if (it == file_storage.end()) return nullptr;
+	if (it->second.isMember()) return true;
+	else return false;
+}
 
 File *FileStorage::searchFilesByMembershipID(MyMembershipID *mID){
 	unordered_map<int, File>::iterator it = file_storage.find(mID->getMid());

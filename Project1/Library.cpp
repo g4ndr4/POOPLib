@@ -17,7 +17,13 @@ void Library::setBorrowingLimmit(int n){
 //operacije sa clanovima
 
 MyMembershipID *Library::newMember(Person *p){
-	if (searchForExistingSubscription(p->getPID().getJmbg())) return nullptr;
+	if (searchForExistingSubscription(p->getPID().getJmbg())) {
+		if (!file_storage.isMember(p->getMembershipID()->getMid())){
+			file_storage.setMember(true, p->getMembershipID()->getMid());
+			return nullptr;
+		}
+		return nullptr;
+	}	
 	File f(p);
 	MyMembershipID *mmID = new MyMembershipID(p->getPID());
 	file_storage.addFile(f, (*mmID).getMid());
@@ -25,12 +31,24 @@ MyMembershipID *Library::newMember(Person *p){
 }
 
 bool Library::subscribeMember(Person *p){
-	if (searchForExistingSubscription(p->getPID().getJmbg())) return false;
+	if (searchForExistingSubscription(p->getPID().getJmbg())) {
+		if (!file_storage.isMember(p->getMembershipID()->getMid())){
+			file_storage.setMember(true, p->getMembershipID()->getMid());
+			return nullptr;
+		}
+		return nullptr;
+	}
 	File f(p);
 	MyMembershipID *mmID = new MyMembershipID(p->getPID());
 	p->setMembershipID(mmID);
 	file_storage.addFile(f, (*mmID).getMid());
 	return true;
+}
+
+Person *Library::unsubscribeMember(int membership_id){
+	Person *member = file_storage.unsubscribeMember(membership_id);
+	if (member) return member;
+	else return nullptr;
 }
 
 bool Library::searchForExistingSubscription(long jmbg){

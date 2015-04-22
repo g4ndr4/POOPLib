@@ -18,6 +18,8 @@
 			return &borrowing_collection;
 		}
 
+		bool hasActiveBorrowings() const;
+
 		void returnBook(string title, int &borrowing_count, vector<Borrowing *> &borrowing_temp);
 
 		bool searchByReturnDate(Date current_date, Date borrowing_date);

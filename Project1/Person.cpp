@@ -14,8 +14,8 @@ string Person::getSurname() const{
 	return surname;
 }
 
-MyMembershipID &Person::getMembershipID() const{
-	return *mID;
+MyMembershipID *Person::getMembershipID() const{
+	return mID;
 }
 
 void Person::setMembershipID(MyMembershipID *m){

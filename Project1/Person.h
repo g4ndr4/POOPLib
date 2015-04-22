@@ -25,7 +25,7 @@
 			PersonalID &getPID();
 			string getName() const;
 			string getSurname() const;
-			MyMembershipID &getMembershipID() const;
+			MyMembershipID *getMembershipID() const;
 
 			void setMembershipID(MyMembershipID *m);
 			

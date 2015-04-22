@@ -10,12 +10,19 @@
 	
 	class File{
 		private:
-			Person *member;
+			Person *person;
+			bool member;
 			BorrowingCollection borrowing_collection;
 		public:
 			File(Person *p);
 
-			Person &getPerson() const;
+			void setMember(bool m);
+
+			Person *getPerson() const;
+			
+			bool isMember() const;
+
+			bool hasActiveBorrowings() const;
 
 			void returnBook(string title);
 

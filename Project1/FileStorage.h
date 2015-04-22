@@ -14,7 +14,11 @@
 			bool addFile(File f, int mmID);
 			void removeFile(int membership_id);
 			
+			void setMember(bool status, int membership_id);
+
 			bool searchForExistingSubscription(long jmbg);
+			bool isMember(int membership_id);
+			Person *unsubscribeMember(int membership_id);
 
 			File *searchFilesByMembershipID(MyMembershipID *mID);
 

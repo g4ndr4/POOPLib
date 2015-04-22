@@ -11,7 +11,7 @@
 		~OperationEngine();
 
 		void enableLogging();
-		void undo();
+		void undo(Operation *o);
 		Result *submitOperation(Operation *o);
 	};
 

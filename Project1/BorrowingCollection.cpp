@@ -5,6 +5,13 @@ bool BorrowingCollection::addBorrowing(Borrowing b){
 	return true;
 }
 
+bool BorrowingCollection::hasActiveBorrowings() const{
+	for (auto it : borrowing_collection){
+		if (it.getBook() != nullptr) return true;
+	}
+	return false;
+}
+
 void BorrowingCollection::returnBook(string title, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
 	for (vector<Borrowing>::iterator it = borrowing_collection.begin(); it != borrowing_collection.end(); ++it){
 		if (it->getBook()->getTitle() == title) {

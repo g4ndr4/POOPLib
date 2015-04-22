@@ -31,11 +31,15 @@
 
 			//get
 			
+			File *getFile(int membership_id);
+
 			//operacije sa clanovima
 			
 			MyMembershipID *newMember(Person *p);
 
 			bool subscribeMember(Person *p);
+
+			Person *unsubscribeMember(int membership_id);
 
 			bool searchForExistingSubscription(long jmbg);
 			

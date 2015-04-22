@@ -2,7 +2,8 @@
 
 
 File::File(Person *p){
-	member = p;
+	person = p;
+	member = true;
 }
 
 void File::returnBook(string title){
@@ -15,8 +16,20 @@ void File::returnBook(string title){
 	borrowing_temp[index-1]->returnBook();
 }
 
-Person &File::getPerson() const{
-	return *member;
+void File::setMember(bool m){
+	member = m;
+}
+
+Person *File::getPerson() const{
+	return person;
+}
+
+bool File::isMember() const{
+	return member;
+}
+
+bool File::hasActiveBorrowings() const{
+	return borrowing_collection.hasActiveBorrowings();
 }
 
 bool File::addBorrowing(Borrowing b){
