@@ -51,12 +51,12 @@
 			
 			Library &addBook(Book &b);
 			void removeBook(string title);
-			int borrowBook(MyMembershipID *mID, string title);
-			void returnBook(MyMembershipID *mID, string title);
+		//	int borrowBook(MyMembershipID *mID, string title);
+			//void returnBook(MyMembershipID *mID, string title);
 			//void changeCondition(string title);
 			
 			//Pretrage
-			
+			File *searchFilesByMembershipID(int membership_id);
 			vector<Book *> *searchByTitle(string title);
 			vector<Book *> *searchByAuthor(string author);
 			Book *searchByTitle(string title, int publicationYear, string publisherName);

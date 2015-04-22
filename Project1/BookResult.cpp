@@ -11,3 +11,7 @@ BookResult::~BookResult(){}
 void BookResult::addBook(Book *b){
 	result->push_back(b);
 }
+
+Book *BookResult::getBook(int index){
+	return result->at(index);
+}

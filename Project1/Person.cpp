@@ -28,10 +28,10 @@ bool Person::joinLibrary(Library &lib){
 }
 
 void Person::borrowBook(Library &lib, string title){
-	lib.borrowBook(mID, title);
+	//lib.borrowBook(mID, title);
 }
 
 Person &Person::returnBook(Library &lib, string title){
-	lib.returnBook(mID, title);
+	//lib.returnBook(mID, title);
 	return *this;
 }

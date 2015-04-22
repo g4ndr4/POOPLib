@@ -16,6 +16,8 @@
 
 		void addBook(Book *);
 
+		Book *getBook(int index);
+
 		friend ostream &operator<<(ostream &os, const BookResult &br){
 			for (auto it : *br.result){
 				os << *it << endl;

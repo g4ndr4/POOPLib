@@ -20,7 +20,7 @@
 			bool isMember(int membership_id);
 			Person *unsubscribeMember(int membership_id);
 
-			File *searchFilesByMembershipID(MyMembershipID *mID);
+			File *searchFilesByMembershipID(int membership_id);
 
 			vector<File *> *searchByReturnDate(Date current_date, Date borrowing_date);
 

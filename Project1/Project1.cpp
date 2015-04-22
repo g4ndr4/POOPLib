@@ -15,6 +15,7 @@
 #include "SubscribeMember.h"
 #include "UnsubscribeMember.h"
 #include "AddBook.h"
+#include "BorrowBook.h"
 
 using namespace std;
 
@@ -58,13 +59,22 @@ int main(int argc, char const *argv[]){
 	Book *bp4 = &b4;
 	Book *bp5 = &b5;
 	Book *bp6 = &b6;
-	
-	
+	SearchBooksByTitle sbt("Naslov1", &lib);
+	Result *r = operation_engine.submitOperation(&sbt);
+	BookResult *br = dynamic_cast<BookResult *>(r);
+	Book * knjiska = br->getBook(0);
+	BorrowBook bb(knjiska, 1, Date(1, 2, 3), Date(2, 3, 4), &lib);
+	operation_engine.submitOperation(&bb);
+	SearchBooksByTitle sbt1("Naslov3", &lib);
+	r = operation_engine.submitOperation(&sbt1);
+	br = dynamic_cast<BookResult *>(r);
+	knjiska = br->getBook(0);
+	BorrowBook bb1(knjiska, 1, Date(1, 2, 3), Date(2, 3, 4), &lib);
+	operation_engine.submitOperation(&bb1);
 	string s;
 	//cin >> s;
 
-	//SearchBooksByTitle sbt(s, &lib);
-	//Result *r = operation_engine.submitOperation(&sbt);
+	
 	//PrintResults pr(r, &lib);
 	//operation_engine.submitOperation(&pr);
 	//cin >> s;
@@ -72,7 +82,7 @@ int main(int argc, char const *argv[]){
 	//Result *r = operation_engine.submitOperation(&sba);
 	//PrintResults pr1(r, &lib);
 	//operation_engine.submitOperation(&pr1);
-	Person p5("Djordano", "Bruno", 1244);
+/*	Person p5("Djordano", "Bruno", 1244);
 	SubscribeMember sm(&p5, &lib);
 	operation_engine.submitOperation(&sm);
 	operation_engine.undo(&sm);
@@ -91,6 +101,7 @@ int main(int argc, char const *argv[]){
 	Result *r = operation_engine.submitOperation(&sbpr);
 	PrintResults pr1(r, &lib);
 	operation_engine.submitOperation(&pr1);
+	*/
 //	lib.addBook("Zbirka zadataka iz matematike", autor4, "Zavod za udzbenike", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	//lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();

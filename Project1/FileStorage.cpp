@@ -45,8 +45,8 @@ bool FileStorage::isMember(int membership_id){
 	else return false;
 }
 
-File *FileStorage::searchFilesByMembershipID(MyMembershipID *mID){
-	unordered_map<int, File>::iterator it = file_storage.find(mID->getMid());
+File *FileStorage::searchFilesByMembershipID(int memberhsip_id){
+	unordered_map<int, File>::iterator it = file_storage.find(memberhsip_id);
 	if (it == file_storage.end()) return nullptr;
 	else return &(it->second);
 }

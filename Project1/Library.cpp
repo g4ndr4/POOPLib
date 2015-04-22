@@ -101,6 +101,10 @@ void Library::removeBook(string title){
 	}
 }*/
 
+File *Library::searchFilesByMembershipID(int membership_id){
+	return file_storage.searchFilesByMembershipID(membership_id);
+}
+/*
 int Library::borrowBook(MyMembershipID *mID, string title){
 	int day, month, year;
 	
@@ -128,14 +132,15 @@ int Library::borrowBook(MyMembershipID *mID, string title){
 	else return -1;
 
 }
-
+*/
+/*
 void Library::returnBook(MyMembershipID *mID, string title){
 	File *fp = file_storage.searchFilesByMembershipID(mID);
 	if (fp){
 		fp->returnBook(title);
 	}
 }
-
+*/
 //pretrage
 
 vector<Book *> *Library::searchByTitle(string title){
