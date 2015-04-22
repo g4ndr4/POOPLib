@@ -11,10 +11,12 @@
 		vector<File *> *result;
 	public:
 		MemberResult();
+		MemberResult(vector<File *> r);
 		MemberResult(vector<File *> *r);
 		virtual ~MemberResult();
 
 		void addFile(File *f);
+		File *getFile(int index);
 
 		friend ostream &operator<<(ostream &os, const MemberResult &mr){
 			for (auto it : *mr.result){

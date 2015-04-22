@@ -16,6 +16,8 @@
 #include "UnsubscribeMember.h"
 #include "AddBook.h"
 #include "BorrowBook.h"
+#include "ReturnBook.h"
+#include "SearchMembersByID.h"
 
 using namespace std;
 
@@ -71,6 +73,16 @@ int main(int argc, char const *argv[]){
 	knjiska = br->getBook(0);
 	BorrowBook bb1(knjiska, 1, Date(1, 2, 3), Date(2, 3, 4), &lib);
 	operation_engine.submitOperation(&bb1);
+	SearchMembersByID smbid(1, &lib);
+	r = operation_engine.submitOperation(&smbid);
+	MemberResult *fajliska = dynamic_cast<MemberResult *>(r);
+	File *f = fajliska->getFile(0);
+	Borrowing *b = f->getBorrowing(0);
+	ReturnBook rb1(b, &lib);
+	ReturnBook rb2(f->getBorrowing(1), &lib);
+	operation_engine.submitOperation(&rb1);
+	operation_engine.submitOperation(&rb2);
+	
 	string s;
 	//cin >> s;
 

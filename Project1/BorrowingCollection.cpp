@@ -12,6 +12,14 @@ bool BorrowingCollection::hasActiveBorrowings() const{
 	return false;
 }
 
+vector<Borrowing> *BorrowingCollection::getBorrowingCollection(){
+	return &borrowing_collection;
+}
+
+Borrowing *BorrowingCollection::getBorrowing(int index){
+	return &(borrowing_collection.at(index));
+}
+
 void BorrowingCollection::returnBook(string title, int &borrowing_count, vector<Borrowing *> &borrowing_temp){
 	for (vector<Borrowing>::iterator it = borrowing_collection.begin(); it != borrowing_collection.end(); ++it){
 		if (it->getBook()->getTitle() == title) {

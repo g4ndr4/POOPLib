@@ -19,6 +19,7 @@
 			void setMember(bool m);
 
 			Person *getPerson() const;
+			Borrowing *getBorrowing(int index);
 			
 			bool isMember() const;
 

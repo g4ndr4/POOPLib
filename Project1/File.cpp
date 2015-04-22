@@ -24,6 +24,10 @@ Person *File::getPerson() const{
 	return person;
 }
 
+Borrowing *File::getBorrowing(int index){
+	return borrowing_collection.getBorrowing(index);
+}
+
 bool File::isMember() const{
 	return member;
 }
