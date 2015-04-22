@@ -8,17 +8,17 @@
 
 	class BorrowingCollection{
 	private:
-		vector<Borrowing> borrowing_collection;
+		vector<Borrowing *> borrowing_collection;
 	public:
 		
 		//konstruktori i destruktori
 		
-		bool addBorrowing(Borrowing b);
-		vector<Borrowing> *getBorrowing(){
+		bool addBorrowing(Borrowing *b);
+	/*	vector<Borrowing *> *getBorrowing(){
 			return &borrowing_collection;
-		}
+	*/
 
-		vector<Borrowing> *getBorrowingCollection();
+		vector<Borrowing *> *getBorrowingCollection();
 
 		Borrowing *getBorrowing(int index);
 

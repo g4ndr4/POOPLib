@@ -4,6 +4,7 @@
 
 Borrowing::Borrowing(Date borrowed_date, Date return_date, Book *b) : borrowedDate(borrowed_date), returnDate(return_date){
 	book = b;
+	book->setBorrow(this);
 }
 
 //set

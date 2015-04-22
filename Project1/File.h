@@ -20,6 +20,8 @@
 
 			Person *getPerson() const;
 			Borrowing *getBorrowing(int index);
+
+			bool addBorrowing(Borrowing *b);
 			
 			bool isMember() const;
 

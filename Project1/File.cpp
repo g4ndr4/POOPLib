@@ -36,7 +36,7 @@ bool File::hasActiveBorrowings() const{
 	return borrowing_collection.hasActiveBorrowings();
 }
 
-bool File::addBorrowing(Borrowing b){
+bool File::addBorrowing(Borrowing *b){
 	borrowing_collection.addBorrowing(b);
 	return true;
 }

@@ -9,6 +9,7 @@ BorrowBook::BorrowBook(Book *b, int mID, Date bd, Date rd, Library *l) : book(b)
 BorrowBook::~BorrowBook(){}
 
 Result *BorrowBook::execute(){
-	(library->searchFilesByMembershipID(membership_id))->addBorrowing(Borrowing(borrowed_date, return_date, book));
+	Borrowing *borrowing = new Borrowing(borrowed_date, return_date, book);
+	(library->searchFilesByMembershipID(membership_id))->addBorrowing(borrowing);
 	return nullptr;
 }
