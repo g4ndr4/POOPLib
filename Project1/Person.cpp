@@ -18,6 +18,10 @@ MyMembershipID &Person::getMembershipID() const{
 	return *mID;
 }
 
+void Person::setMembershipID(MyMembershipID *m){
+	mID = m;
+}
+
 bool Person::joinLibrary(Library &lib){
 	mID = lib.newMember(this);
 	return true;

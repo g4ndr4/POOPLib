@@ -12,6 +12,7 @@
 #include "SearchByAuthors.h"
 #include "SearchMembersByReturnDate.h"
 #include "SearchMembersByPeriod.h"
+#include "SubscribeMember.h"
 
 using namespace std;
 
@@ -66,7 +67,10 @@ int main(int argc, char const *argv[]){
 	//Result *r = operation_engine.submitOperation(&sba);
 	//PrintResults pr1(r, &lib);
 	//operation_engine.submitOperation(&pr1);
-	p1.borrowBook(lib, "Naslov2");
+	Person p5("Djordano", "Bruno", 1244);
+	SubscribeMember sm(&p5, &lib);
+	operation_engine.submitOperation(&sm);
+	p5.borrowBook(lib, "Naslov2");
 	p2.borrowBook(lib, "Naslov2");
 	SearchMembersByPeriod sbpr(1, 04, 2015, 30, 04, 2015, &lib);
 	Result *r = operation_engine.submitOperation(&sbpr);

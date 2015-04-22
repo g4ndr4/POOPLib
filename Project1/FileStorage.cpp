@@ -11,6 +11,12 @@ void FileStorage::removeFile(int membership_id){
 	file_storage.erase(membership_id);
 }
 
+bool FileStorage::searchForExistingSubscription(long jmbg){
+	for (auto it : file_storage) if (it.second.getPerson().getPID().getJmbg() == jmbg) return true;
+	return false;
+}
+
+
 File *FileStorage::searchFilesByMembershipID(MyMembershipID *mID){
 	unordered_map<int, File>::iterator it = file_storage.find(mID->getMid());
 	if (it == file_storage.end()) return nullptr;

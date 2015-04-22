@@ -14,6 +14,8 @@
 			bool addFile(File f, int mmID);
 			void removeFile(int membership_id);
 			
+			bool searchForExistingSubscription(long jmbg);
+
 			File *searchFilesByMembershipID(MyMembershipID *mID);
 
 			vector<File *> *searchByReturnDate(Date current_date, Date borrowing_date);

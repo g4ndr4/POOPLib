@@ -26,6 +26,8 @@
 			string getName() const;
 			string getSurname() const;
 			MyMembershipID &getMembershipID() const;
+
+			void setMembershipID(MyMembershipID *m);
 			
 			bool joinLibrary(Library &lib);
 			void borrowBook(Library &lib, string title);

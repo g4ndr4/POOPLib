@@ -34,6 +34,10 @@
 			//operacije sa clanovima
 			
 			MyMembershipID *newMember(Person *p);
+
+			bool subscribeMember(Person *p);
+
+			bool searchForExistingSubscription(long jmbg);
 			
 			//operacije sa izdavacima
 			

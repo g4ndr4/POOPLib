@@ -17,14 +17,24 @@ void Library::setBorrowingLimmit(int n){
 //operacije sa clanovima
 
 MyMembershipID *Library::newMember(Person *p){
-	if (&(p->getMembershipID()) != nullptr){
-		cout << "Greska! Osoba je vec clan biblioteke!" << endl;
-		return nullptr;
-	}
+	if (searchForExistingSubscription(p->getPID().getJmbg())) return nullptr;
 	File f(p);
 	MyMembershipID *mmID = new MyMembershipID(p->getPID());
 	file_storage.addFile(f, (*mmID).getMid());
 	return mmID;
+}
+
+bool Library::subscribeMember(Person *p){
+	if (searchForExistingSubscription(p->getPID().getJmbg())) return false;
+	File f(p);
+	MyMembershipID *mmID = new MyMembershipID(p->getPID());
+	p->setMembershipID(mmID);
+	file_storage.addFile(f, (*mmID).getMid());
+	return true;
+}
+
+bool Library::searchForExistingSubscription(long jmbg){
+	return file_storage.searchForExistingSubscription(jmbg);
 }
 
 //operacije sa izdavacima
