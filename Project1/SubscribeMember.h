@@ -12,7 +12,7 @@
 
 		void log() override{}
 
-		void undo() override{}
+		void undo() override;
 
 		Result *execute() override;
 	};

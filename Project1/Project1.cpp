@@ -71,6 +71,7 @@ int main(int argc, char const *argv[]){
 	Person p5("Djordano", "Bruno", 1244);
 	SubscribeMember sm(&p5, &lib);
 	operation_engine.submitOperation(&sm);
+	operation_engine.undo(&sm);
 	UnsubscribeMember um(5, &lib);
 	operation_engine.submitOperation(&um);
 	operation_engine.undo(&um);

@@ -46,6 +46,10 @@ bool Library::subscribeMember(Person *p){
 }
 
 Person *Library::unsubscribeMember(int membership_id){
+	if (file_storage.isMember(membership_id)){
+		file_storage.setMember(false, membership_id);
+		return nullptr;
+	}
 	Person *member = file_storage.unsubscribeMember(membership_id);
 	if (member) return member;
 	else return nullptr;
