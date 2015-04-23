@@ -13,5 +13,5 @@ void BookResult::addBook(Book *b){
 }
 
 Book *BookResult::getBook(int index){
-	return result->at(index);
+	return result->at(index - 1);
 }

@@ -12,15 +12,18 @@
 	public:
 		BookResult();
 		BookResult(vector<Book *> *r);
-		virtual ~BookResult();
+		~BookResult();
 
 		void addBook(Book *);
 
 		Book *getBook(int index);
 
 		friend ostream &operator<<(ostream &os, const BookResult &br){
+			int count = 0;
 			for (auto it : *br.result){
-				os << *it << endl;
+				os << "Redni broj knjige: " << count + 1 << endl;
+				os << *(it) << endl;
+				count++;
 			}
 			return os;
 		}

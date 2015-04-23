@@ -13,7 +13,7 @@
 		UnsubscribeMember(int mID, Library *l);
 		~UnsubscribeMember();
 
-		void log() override{}
+		void log() override;
 		void undo() override;
 
 		Result *execute() override;

@@ -18,6 +18,7 @@
 #include "BorrowBook.h"
 #include "ReturnBook.h"
 #include "SearchMembersByID.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -26,11 +27,21 @@ int main(int argc, char const *argv[]){
 	SetOfPublishers *sp = SetOfPublishers::getInstance();
 	Library lib(sp);
 	OperationEngine operation_engine;
-
 	Person p1("Pera", "Peric", 123);
 	Person p2("Milan", "Milic", 456);
 	Person p3("Petar", "Petrovic", 789);
 	Person p4("Marko", "Markovic", 666);
+
+	SubscribeMember sm1(&p1, &lib);
+	SubscribeMember sm2(&p2, &lib);
+	SubscribeMember sm3(&p3, &lib);
+	SubscribeMember sm4(&p4, &lib);
+
+	operation_engine.submitOperation(&sm1);
+	operation_engine.submitOperation(&sm2);
+	operation_engine.submitOperation(&sm3);
+	operation_engine.submitOperation(&sm4);
+
 
 	p1.joinLibrary(lib);
 	p2.joinLibrary(lib);
@@ -61,6 +72,13 @@ int main(int argc, char const *argv[]){
 	Book *bp4 = &b4;
 	Book *bp5 = &b5;
 	Book *bp6 = &b6;
+
+	Menu menu(&lib);
+	bool terminate = false;
+	while (!terminate){
+		terminate = menu.select();
+	}
+
 	SearchBooksByTitle sbt("Naslov1", &lib);
 	Result *r = operation_engine.submitOperation(&sbt);
 	BookResult *br = dynamic_cast<BookResult *>(r);
@@ -118,9 +136,9 @@ int main(int argc, char const *argv[]){
 	//lib.addBook("Zbirka zadataka iz matematike", autor5, "Krug", 2011, "zanr", "jezik", 1, "ISBN10", "ISBN13", 10, 11, 3, "Potrebno_Zameniti");
 	lib.bookHistory();
 	
-	p1.returnBook(lib, "Naslov2");
-	p2.borrowBook(lib, "Naslov2");
-	p3.borrowBook(lib, "Naslov3");
+	//p1.returnBook(lib, "Naslov2");
+	//p2.borrowBook(lib, "Naslov2");
+	//p3.borrowBook(lib, "Naslov3");
 	//lib.changeCondition("Naslov1");
 	//lib.searchFilesByReturnDate(17, 3, 2015, 1, 1, 2015);
 	lib.searchByBookCondition("Malo_Ostecena");
@@ -132,13 +150,6 @@ int main(int argc, char const *argv[]){
 	lib.bookHistory();
 	int i;
 	cin >> i;
-
-	Menu menu(lib);
-	bool terminate = false;
-	while (!terminate){
-		menu.select();
-	}
-
 	return 0;
 }
 

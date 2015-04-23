@@ -9,7 +9,5 @@ SearchMembersByID::SearchMembersByID(int mID, Library *l) : SearchMembers(l){
 SearchMembersByID::~SearchMembersByID(){}
 
 Result *SearchMembersByID::execute(){
-	vector<File *> *temp_vect = new vector<File *>;
-	temp_vect->push_back(library->searchFilesByMembershipID(membership_id));
-	return new MemberResult(temp_vect);
+	return new FileResult(library->searchFilesByMembershipID(membership_id));
 }

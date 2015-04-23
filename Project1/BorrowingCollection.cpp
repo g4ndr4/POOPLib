@@ -13,7 +13,11 @@ bool BorrowingCollection::hasActiveBorrowings() const{
 }
 
 vector<Borrowing *> *BorrowingCollection::getBorrowingCollection(){
-	return &borrowing_collection;
+	vector<Borrowing *> *borrowing_temp = new vector<Borrowing *>;
+	for (auto it : borrowing_collection){
+		if (it->getBook() != nullptr) borrowing_temp->push_back(it);
+	}
+	return borrowing_temp;
 }
 
 Borrowing *BorrowingCollection::getBorrowing(int index){

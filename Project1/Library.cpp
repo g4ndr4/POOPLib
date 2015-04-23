@@ -24,39 +24,49 @@ MyMembershipID *Library::newMember(Person *p){
 		}
 		return nullptr;
 	}	
-	File f(p);
+	File *f = new File(p);
 	MyMembershipID *mmID = new MyMembershipID(p->getPID());
 	file_storage.addFile(f, (*mmID).getMid());
 	return mmID;
 }
 
 bool Library::subscribeMember(Person *p){
-	if (searchForExistingSubscription(p->getPID().getJmbg())) {
-		if (!file_storage.isMember(p->getMembershipID()->getMid())){
-			file_storage.setMember(true, p->getMembershipID()->getMid());
+	File *file_temp;
+	file_temp = searchForExistingSubscription(p->getPID().getJmbg());
+	if (file_temp) {
+		if (!file_temp->isMember()){
+			file_temp->setMember(true);
+			cout << "sad ste ponovo clan" << endl;
 			return nullptr;
 		}
 		return nullptr;
 	}
-	File f(p);
 	MyMembershipID *mmID = new MyMembershipID(p->getPID());
 	p->setMembershipID(mmID);
+	File *f = new File(p);
 	file_storage.addFile(f, (*mmID).getMid());
+	cout << "sad ste clan" << endl;
 	return true;
 }
 
 Person *Library::unsubscribeMember(int membership_id){
 	if (file_storage.isMember(membership_id)){
 		file_storage.setMember(false, membership_id);
+		cout << "sad ste isclanjeni" << endl;
 		return nullptr;
 	}
-	Person *member = file_storage.unsubscribeMember(membership_id);
+/*	Person *member = file_storage.unsubscribeMember(membership_id);
 	if (member) return member;
-	else return nullptr;
+	*/
+	else{
+		cout << "Niste clan" << endl;
+		return nullptr;
+	}
 }
 
-bool Library::searchForExistingSubscription(long jmbg){
-	return file_storage.searchForExistingSubscription(jmbg);
+File *Library::searchForExistingSubscription(long jmbg){
+	File *f = file_storage.searchForExistingSubscription(jmbg);
+	return f;
 }
 
 //operacije sa izdavacima

@@ -12,14 +12,19 @@
 		private:
 			Person *person;
 			bool member;
+			int membership_id;
 			BorrowingCollection borrowing_collection;
 		public:
 			File(Person *p);
 
 			void setMember(bool m);
 
+			int getMembershipID() const;
+
 			Person *getPerson() const;
 			Borrowing *getBorrowing(int index);
+
+			vector<Borrowing *> *searchBorrowings();
 
 			bool addBorrowing(Borrowing *b);
 			

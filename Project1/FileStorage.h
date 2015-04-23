@@ -9,14 +9,14 @@
 	
 	class FileStorage{
 		private:
-			unordered_map<int, File> file_storage;
+			unordered_map<int, File *> file_storage;
 		public:
-			bool addFile(File f, int mmID);
+			bool addFile(File *f, int mmID);
 			void removeFile(int membership_id);
 			
 			void setMember(bool status, int membership_id);
 
-			bool searchForExistingSubscription(long jmbg);
+			File *searchForExistingSubscription(long jmbg);
 			bool isMember(int membership_id);
 			Person *unsubscribeMember(int membership_id);
 

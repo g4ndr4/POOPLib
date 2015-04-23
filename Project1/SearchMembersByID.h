@@ -2,6 +2,7 @@
 #ifndef _SearchMembersByID_H_
 	#define _SearchMembersByID_H_
 	#include "SearchMembers.h"
+	#include "FileResult.h"
 	class SearchMembersByID : public SearchMembers{
 	private:
 		int membership_id;

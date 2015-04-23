@@ -3,6 +3,7 @@
 
 File::File(Person *p){
 	person = p;
+	membership_id = p->getMembershipID()->getMid();
 	member = true;
 }
 
@@ -20,12 +21,20 @@ void File::setMember(bool m){
 	member = m;
 }
 
+int File::getMembershipID() const{
+	return membership_id;
+}
+
 Person *File::getPerson() const{
 	return person;
 }
 
 Borrowing *File::getBorrowing(int index){
 	return borrowing_collection.getBorrowing(index);
+}
+
+vector<Borrowing *> *File::searchBorrowings(){
+	return borrowing_collection.getBorrowingCollection();
 }
 
 bool File::isMember() const{

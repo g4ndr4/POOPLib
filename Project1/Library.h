@@ -41,7 +41,7 @@
 
 			Person *unsubscribeMember(int membership_id);
 
-			bool searchForExistingSubscription(long jmbg);
+			File *searchForExistingSubscription(long jmbg);
 			
 			//operacije sa izdavacima
 			
